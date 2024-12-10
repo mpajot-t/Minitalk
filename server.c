@@ -6,7 +6,7 @@
 /*   By: mpajot-t <mpajot-t@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 10:49:17 by mpajot-t          #+#    #+#             */
-/*   Updated: 2024/12/09 11:42:44 by mpajot-t         ###   ########.fr       */
+/*   Updated: 2024/12/10 10:06:37 by mpajot-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@ void signal_handler(int signal)
 	static int				bit;
 	static unsigned char	current_char;
 
-	current_char |= (signal == SIGUSR1);
+	if (signal == SIGUSR1)
+		current_char |= (1 << (7 - bit));
 	bit++;
 	if (bit == 8)
 	{
@@ -28,8 +29,6 @@ void signal_handler(int signal)
 		bit = 0;
 		current_char = 0;
 	}
-	else
-		current_char <<= 1;
 }
 
 int	main (void)

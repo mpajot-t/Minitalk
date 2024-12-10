@@ -6,7 +6,7 @@
 /*   By: mpajot-t <mpajot-t@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 11:21:56 by mpajot-t          #+#    #+#             */
-/*   Updated: 2024/12/09 10:51:41 by mpajot-t         ###   ########.fr       */
+/*   Updated: 2024/12/10 10:07:21 by mpajot-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void send_signal(int pid, unsigned char character)
 			kill(pid, SIGUSR2);
 		else
 			kill(pid, SIGUSR1);
-		usleep(42);
+		usleep(100);
 	}
 }
 
@@ -40,7 +40,7 @@ int main (int argc, char **argv)
 	i = 0;
 	if (argc != 3)
 	{
-		ft_printf("Erreur d'arguments\n");
+		ft_printf("Erreur d'arguments (Format : PID ""'message'"")\n");
 		exit (0);
 	}
 	pid = ft_atoi(argv[1]);
