@@ -6,15 +6,15 @@
 /*   By: mpajot-t <mpajot-t@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 11:00:41 by mpajot-t          #+#    #+#             */
-/*   Updated: 2024/12/12 09:31:24 by mpajot-t         ###   ########.fr       */
+/*   Updated: 2024/12/12 10:16:59 by mpajot-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 
-void send_signal(int pid, unsigned char character)
+void	send_signal(int pid, unsigned char character)
 {
-	int		i;
+	int				i;
 	unsigned char	temp_char;
 
 	i = 8;
@@ -31,15 +31,15 @@ void send_signal(int pid, unsigned char character)
 	}
 }
 
-void handle_signal(int signal)
+void	handle_signal(int signal)
 {
 	if (signal == SIGUSR1)
 		ft_printf("Received bit 1\n");
 	else if (signal == SIGUSR2)
-		ft_printf("Received bit 0\n");	
+		ft_printf("Received bit 0\n");
 }
 
-int main (int argc, char **argv)
+int	main(int argc, char **argv)
 {
 	int			pid;
 	int			i;
@@ -60,6 +60,6 @@ int main (int argc, char **argv)
 		send_signal(pid, message[i]);
 		i++;
 	}
-	send_signal(pid,'\0');
+	send_signal(pid, '\0');
 	return (0);
 }
